@@ -26,10 +26,10 @@ $s_url   = (string) nydla_biz_mod( 'nydla_biz_cta_secondary_url', 'mailto:info@n
 			<?php endif; ?>
 			<p class="biz-hero__actions">
 				<?php if ( $p_lab && $p_url ) : ?>
-					<a class="biz-btn biz-btn--accent" href="<?php echo esc_url( $p_url ); ?>"><?php echo esc_html( $p_lab ); ?></a>
+					<a class="biz-btn biz-btn--accent" href="<?php echo esc_url( $p_url ); ?>"<?php echo nydla_biz_link_target_attrs( $p_url ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo esc_html( $p_lab ); ?></a>
 				<?php endif; ?>
 				<?php if ( $s_lab && $s_url ) : ?>
-					<a class="biz-btn biz-btn--ghost" href="<?php echo esc_url( $s_url ); ?>"><?php echo esc_html( $s_lab ); ?></a>
+					<a class="biz-btn biz-btn--ghost" href="<?php echo esc_url( $s_url ); ?>"<?php echo nydla_biz_link_target_attrs( $s_url ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo esc_html( $s_lab ); ?></a>
 				<?php endif; ?>
 			</p>
 		</div>

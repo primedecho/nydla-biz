@@ -26,10 +26,10 @@ while ( have_posts() ) :
 					<?php endif; ?>
 					<p class="biz-minisite__actions">
 						<?php if ( $settings['cta_label'] && $settings['cta_url'] ) : ?>
-							<a class="biz-btn biz-btn--accent" href="<?php echo esc_url( $settings['cta_url'] ); ?>"><?php echo esc_html( $settings['cta_label'] ); ?></a>
+							<a class="biz-btn biz-btn--accent" href="<?php echo esc_url( $settings['cta_url'] ); ?>"<?php echo nydla_biz_link_target_attrs( $settings['cta_url'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo esc_html( $settings['cta_label'] ); ?></a>
 						<?php endif; ?>
 						<?php if ( $contact && $c_lab ) : ?>
-							<a class="biz-btn biz-btn--ghost" href="<?php echo esc_url( $contact ); ?>"><?php echo esc_html( $c_lab ); ?></a>
+							<a class="biz-btn biz-btn--ghost" href="<?php echo esc_url( $contact ); ?>"<?php echo nydla_biz_link_target_attrs( $contact ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo esc_html( $c_lab ); ?></a>
 						<?php endif; ?>
 					</p>
 				</div>

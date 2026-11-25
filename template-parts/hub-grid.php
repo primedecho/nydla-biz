@@ -27,7 +27,8 @@ if ( empty( $cards ) ) {
 		<ul class="biz-hub__grid">
 			<?php foreach ( $cards as $card ) : ?>
 				<li class="biz-hub__item" style="--card-accent: <?php echo esc_attr( $card['accent'] ? $card['accent'] : 'var(--biz-accent)' ); ?>">
-					<a class="biz-hub__card" href="<?php echo esc_url( $card['url'] ? $card['url'] : '#' ); ?>">
+					<?php $card_url = $card['url'] ? $card['url'] : '#'; ?>
+					<a class="biz-hub__card" href="<?php echo esc_url( $card_url ); ?>"<?php echo nydla_biz_link_target_attrs( $card_url ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 						<?php if ( ! empty( $card['logo'] ) ) : ?>
 							<span class="biz-hub__logo">
 								<img src="<?php echo esc_url( $card['logo'] ); ?>" alt="" loading="lazy" decoding="async">

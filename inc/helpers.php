@@ -71,6 +71,100 @@ function nydla_biz_clamp_int( $value, $min, $max, $fallback ) {
 }
 
 /**
+ * Whether a URL leaves this site.
+ *
+ * @param string $url URL.
+ * @return bool
+ */
+function nydla_biz_is_external_url( $url ) {
+	$url = trim( (string) $url );
+	if ( '' === $url || '#' === $url[0] ) {
+		return false;
+	}
+	if ( preg_match( '#^(mailto:|tel:|sms:)#i', $url ) ) {
+		return true;
+	}
+	$parts = wp_parse_url( $url );
+	if ( empty( $parts['host'] ) ) {
+		return false;
+	}
+	$home = wp_parse_url( home_url( '/' ) );
+	$home_host = isset( $home['host'] ) ? strtolower( $home['host'] ) : '';
+	$link_host = strtolower( $parts['host'] );
+	return $home_host && $link_host && $home_host !== $link_host;
+}
+
+/**
+ * HTML attributes for external links (new tab).
+ *
+ * @param string $url URL.
+ * @return string
+ */
+function nydla_biz_link_target_attrs( $url ) {
+	if ( ! nydla_biz_is_external_url( $url ) ) {
+		return '';
+	}
+	return ' target="_blank" rel="noopener noreferrer"';
+}
+
+/**
+ * Force external anchors in HTML to open in a new tab.
+ *
+ * @param string $content HTML.
+ * @return string
+ */
+function nydla_biz_blank_external_in_html( $content ) {
+	if ( ! is_string( $content ) || false === stripos( $content, '<a ' ) ) {
+		return $content;
+	}
+	return preg_replace_callback(
+		'/<a\s[^>]*href=(["\'])(.*?)\1[^>]*>/i',
+		static function ( $m ) {
+			$tag = $m[0];
+			$url = $m[2];
+			if ( ! nydla_biz_is_external_url( html_entity_decode( $url, ENT_QUOTES | ENT_HTML5 ) ) ) {
+				return $tag;
+			}
+			if ( preg_match( '/\btarget=/i', $tag ) ) {
+				$tag = preg_replace( '/\btarget=(["\']).*?\1/i', 'target="_blank"', $tag );
+			} else {
+				$tag = rtrim( $tag, '>' ) . ' target="_blank">';
+			}
+			if ( preg_match( '/\brel=/i', $tag ) ) {
+				if ( ! preg_match( '/\brel=(["\'][^"\']*\bnoopener\b[^"\']*\1)/i', $tag ) ) {
+					$tag = preg_replace( '/\brel=(["\'])(.*?)\1/i', 'rel="$2 noopener noreferrer"', $tag );
+				}
+			} else {
+				$tag = rtrim( $tag, '>' ) . ' rel="noopener noreferrer">';
+			}
+			return $tag;
+		},
+		$content
+	);
+}
+add_filter( 'the_content', 'nydla_biz_blank_external_in_html', 20 );
+add_filter( 'widget_text', 'nydla_biz_blank_external_in_html', 20 );
+add_filter( 'walker_nav_menu_start_el', 'nydla_biz_blank_external_in_html', 20 );
+
+/**
+ * Nav menu item attributes for external URLs.
+ *
+ * @param array    $atts Attribs.
+ * @param WP_Post  $item Item.
+ * @param stdClass $args Args.
+ * @return array
+ */
+function nydla_biz_nav_link_attrs( $atts, $item, $args ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
+	$url = isset( $atts['href'] ) ? $atts['href'] : '';
+	if ( nydla_biz_is_external_url( $url ) ) {
+		$atts['target'] = '_blank';
+		$atts['rel']    = trim( ( isset( $atts['rel'] ) ? $atts['rel'] . ' ' : '' ) . 'noopener noreferrer' );
+	}
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'nydla_biz_nav_link_attrs', 10, 3 );
+
+/**
  * Fallback primary nav when no menu is assigned.
  */
 function nydla_biz_nav_fallback() {

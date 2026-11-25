@@ -19,13 +19,13 @@ $slab = (string) nydla_biz_mod( 'nydla_biz_cta_secondary_label', __( 'Contact', 
 		<p class="site-footer__copy"><?php echo esc_html( $copy ); ?></p>
 		<p class="site-footer__links">
 			<?php if ( $sec && $slab ) : ?>
-				<a href="<?php echo esc_url( $sec ); ?>"><?php echo esc_html( $slab ); ?></a>
+				<a href="<?php echo esc_url( $sec ); ?>"<?php echo nydla_biz_link_target_attrs( $sec ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo esc_html( $slab ); ?></a>
 			<?php endif; ?>
 			<?php if ( $sec && $slab && $tac && $tlab ) : ?>
 				<span class="site-footer__sep" aria-hidden="true">|</span>
 			<?php endif; ?>
 			<?php if ( $tac && $tlab ) : ?>
-				<a href="<?php echo esc_url( $tac ); ?>"><?php echo esc_html( $tlab ); ?></a>
+				<a href="<?php echo esc_url( $tac ); ?>"<?php echo nydla_biz_link_target_attrs( $tac ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo esc_html( $tlab ); ?></a>
 			<?php endif; ?>
 		</p>
 		<?php if ( $note ) : ?>
