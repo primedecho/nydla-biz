@@ -28,8 +28,8 @@ $header_class   = 'site-header' . ( $sticky ? ' site-header--sticky' : '' );
 			<img
 				src="<?php echo esc_url( $nydla_biz_logo ); ?>"
 				alt="<?php echo esc_attr( $nydla_biz_alt ); ?>"
-				width="280"
-				height="72"
+				width="240"
+				height="57"
 				decoding="async"
 				fetchpriority="high"
 			>
