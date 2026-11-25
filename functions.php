@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NYDLA_BIZ_VERSION', '1.0.4' );
+define( 'NYDLA_BIZ_VERSION', '1.0.5' );
 define( 'NYDLA_BIZ_DIR', get_template_directory() );
 define( 'NYDLA_BIZ_URI', get_template_directory_uri() );
 
