@@ -21,12 +21,15 @@ function nydla_biz_mod( $key, $default = '' ) {
 }
 
 /**
- * Brand logo URL — Customizer logo, then bundled mark.
+ * Brand logo URL — Customizer / site logo, then bundled NYDLA wordmark.
  *
  * @return string
  */
 function nydla_biz_logo_url() {
 	$custom_id = (int) get_theme_mod( 'custom_logo' );
+	if ( ! $custom_id ) {
+		$custom_id = (int) get_option( 'site_logo', 0 );
+	}
 	if ( $custom_id ) {
 		$url = wp_get_attachment_image_url( $custom_id, 'full' );
 		if ( $url ) {

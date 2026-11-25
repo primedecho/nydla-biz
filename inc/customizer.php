@@ -38,7 +38,7 @@ function nydla_biz_customize_register( $wp_customize ) {
 	if ( $logo ) {
 		$logo->section     = 'nydla_biz_brand';
 		$logo->priority    = 5;
-		$logo->description = __( 'Header logo. If empty, the bundled NYDLA mark is used.', 'nydla-biz' );
+		$logo->description = __( 'Header logo. If empty, the bundled NYDLA wordmark (text only) is used.', 'nydla-biz' );
 	}
 
 	$icon = $wp_customize->get_control( 'site_icon' );

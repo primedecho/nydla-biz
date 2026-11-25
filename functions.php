@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NYDLA_BIZ_VERSION', '1.0.3' );
+define( 'NYDLA_BIZ_VERSION', '1.0.4' );
 define( 'NYDLA_BIZ_DIR', get_template_directory() );
 define( 'NYDLA_BIZ_URI', get_template_directory_uri() );
 
@@ -33,8 +33,8 @@ function nydla_biz_setup() {
 	add_theme_support(
 		'custom-logo',
 		array(
-			'height'      => 72,
-			'width'       => 280,
+			'height'      => 57,
+			'width'       => 240,
 			'flex-height' => true,
 			'flex-width'  => true,
 		)
