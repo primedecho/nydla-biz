@@ -71,13 +71,13 @@ function nydla_biz_customize_register( $wp_customize ) {
 	);
 
 	$colors = array(
-		'nydla_biz_color_ink'     => array( 'label' => __( 'Ink (page background)', 'nydla-biz' ), 'default' => '#070a0f' ),
-		'nydla_biz_color_panel'   => array( 'label' => __( 'Panel / header', 'nydla-biz' ), 'default' => '#10151e' ),
-		'nydla_biz_color_line'    => array( 'label' => __( 'Lines / borders', 'nydla-biz' ), 'default' => '#243044' ),
-		'nydla_biz_color_fog'     => array( 'label' => __( 'Muted text', 'nydla-biz' ), 'default' => '#9aa6b8' ),
-		'nydla_biz_color_paper'   => array( 'label' => __( 'Primary text', 'nydla-biz' ), 'default' => '#f4f6f9' ),
-		'nydla_biz_color_accent'  => array( 'label' => __( 'Accent (buttons / marks)', 'nydla-biz' ), 'default' => '#e08920' ),
-		'nydla_biz_color_accent2' => array( 'label' => __( 'Secondary accent', 'nydla-biz' ), 'default' => '#3d9cf0' ),
+		'nydla_biz_color_ink'     => array( 'label' => __( 'Page background', 'nydla-biz' ), 'default' => '#f3f4f6' ),
+		'nydla_biz_color_panel'   => array( 'label' => __( 'Panel / header', 'nydla-biz' ), 'default' => '#ffffff' ),
+		'nydla_biz_color_line'    => array( 'label' => __( 'Lines / borders', 'nydla-biz' ), 'default' => '#d8dde5' ),
+		'nydla_biz_color_fog'     => array( 'label' => __( 'Muted text', 'nydla-biz' ), 'default' => '#5b6575' ),
+		'nydla_biz_color_paper'   => array( 'label' => __( 'Primary text', 'nydla-biz' ), 'default' => '#16191f' ),
+		'nydla_biz_color_accent'  => array( 'label' => __( 'Accent (buttons / marks)', 'nydla-biz' ), 'default' => '#c9852a' ),
+		'nydla_biz_color_accent2' => array( 'label' => __( 'Link accent', 'nydla-biz' ), 'default' => '#1f4f8a' ),
 	);
 
 	foreach ( $colors as $id => $args ) {
@@ -138,7 +138,7 @@ function nydla_biz_customize_register( $wp_customize ) {
 		'nydla_biz_hub_hero',
 		array(
 			'title'       => __( 'Hub hero', 'nydla-biz' ),
-			'description' => __( 'Top of the sponsor hub (.biz home). Short, commercial copy.', 'nydla-biz' ),
+			'description' => __( 'Top of the sponsor hub (.biz home). Keep it short.', 'nydla-biz' ),
 			'panel'       => 'nydla_biz_theme',
 			'priority'    => 40,
 		)
@@ -160,7 +160,7 @@ function nydla_biz_customize_register( $wp_customize ) {
 		'nydla_biz_hub_hero',
 		array(
 			'label'   => __( 'Headline', 'nydla-biz' ),
-			'default' => __( 'Vendor product theater', 'nydla-biz' ),
+			'default' => __( 'Sponsor showcases', 'nydla-biz' ),
 			'type'    => 'text',
 		)
 	);
@@ -170,7 +170,7 @@ function nydla_biz_customize_register( $wp_customize ) {
 		'nydla_biz_hub_hero',
 		array(
 			'label'   => __( 'Supporting line', 'nydla-biz' ),
-			'default' => __( 'Live sponsor mini-sites — sharp product stories, not a second association sitemap.', 'nydla-biz' ),
+			'default' => __( 'Product pages from NYDLA sponsors — clear, short, and ready to share.', 'nydla-biz' ),
 			'type'    => 'textarea',
 		)
 	);
@@ -199,8 +199,8 @@ function nydla_biz_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'nydla_biz_ctas',
 		array(
-			'title'       => __( 'CTAs & TAC-USA', 'nydla-biz' ),
-			'description' => __( 'No cart — Learn more, Contact, path to TAC-USA.', 'nydla-biz' ),
+			'title'       => __( 'CTAs', 'nydla-biz' ),
+			'description' => __( 'Primary and contact buttons. Optional purchase path appears once in the footer.', 'nydla-biz' ),
 			'panel'       => 'nydla_biz_theme',
 			'priority'    => 50,
 		)
@@ -251,9 +251,10 @@ function nydla_biz_customize_register( $wp_customize ) {
 		'nydla_biz_tac_label',
 		'nydla_biz_ctas',
 		array(
-			'label'   => __( 'TAC-USA link label', 'nydla-biz' ),
-			'default' => __( 'Shop via TAC-USA', 'nydla-biz' ),
-			'type'    => 'text',
+			'label'       => __( 'Footer purchase-path label', 'nydla-biz' ),
+			'description' => __( 'Shown once in the footer. Leave blank to hide.', 'nydla-biz' ),
+			'default'     => __( 'Purchase path', 'nydla-biz' ),
+			'type'        => 'text',
 		)
 	);
 	nydla_biz_add_control(
@@ -261,7 +262,7 @@ function nydla_biz_customize_register( $wp_customize ) {
 		'nydla_biz_tac_url',
 		'nydla_biz_ctas',
 		array(
-			'label'   => __( 'TAC-USA URL', 'nydla-biz' ),
+			'label'   => __( 'Footer purchase-path URL', 'nydla-biz' ),
 			'default' => 'https://tac-usa.com/',
 			'type'    => 'url',
 		)
@@ -281,10 +282,10 @@ function nydla_biz_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'nydla_biz_minisite_accent',
 		array(
-			'default'           => '#e08920',
-			'sanitize_callback' => 'sanitize_hex_color',
-			'transport'         => 'refresh',
-		)
+		'default'           => '#c9852a',
+		'sanitize_callback' => 'sanitize_hex_color',
+		'transport'         => 'refresh',
+	)
 	);
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
@@ -324,7 +325,7 @@ function nydla_biz_customize_register( $wp_customize ) {
 		'nydla_biz_footer',
 		array(
 			'label'   => __( 'Copyright / line', 'nydla-biz' ),
-			'default' => __( 'NYDLA.biz — sponsor showcases for the NYDLA network.', 'nydla-biz' ),
+			'default' => __( 'NYDLA.biz', 'nydla-biz' ),
 			'type'    => 'text',
 		)
 	);
@@ -333,9 +334,10 @@ function nydla_biz_customize_register( $wp_customize ) {
 		'nydla_biz_footer_note',
 		'nydla_biz_footer',
 		array(
-			'label'   => __( 'Footer note', 'nydla-biz' ),
-			'default' => __( 'Purchases path through TAC-USA. No cart on this site.', 'nydla-biz' ),
-			'type'    => 'textarea',
+			'label'       => __( 'Footer note (optional)', 'nydla-biz' ),
+			'description' => __( 'Usually leave blank — the purchase-path link is enough.', 'nydla-biz' ),
+			'default'     => '',
+			'type'        => 'textarea',
 		)
 	);
 }
@@ -403,13 +405,13 @@ function nydla_biz_add_control( $wp_customize, $id, $section, $args ) {
  * Print CSS variables from Customizer.
  */
 function nydla_biz_customizer_css() {
-	$ink     = nydla_biz_mod( 'nydla_biz_color_ink', '#070a0f' );
-	$panel   = nydla_biz_mod( 'nydla_biz_color_panel', '#10151e' );
-	$line    = nydla_biz_mod( 'nydla_biz_color_line', '#243044' );
-	$fog     = nydla_biz_mod( 'nydla_biz_color_fog', '#9aa6b8' );
-	$paper   = nydla_biz_mod( 'nydla_biz_color_paper', '#f4f6f9' );
-	$accent  = nydla_biz_mod( 'nydla_biz_color_accent', '#e08920' );
-	$accent2 = nydla_biz_mod( 'nydla_biz_color_accent2', '#3d9cf0' );
+	$ink     = nydla_biz_mod( 'nydla_biz_color_ink', '#f3f4f6' );
+	$panel   = nydla_biz_mod( 'nydla_biz_color_panel', '#ffffff' );
+	$line    = nydla_biz_mod( 'nydla_biz_color_line', '#d8dde5' );
+	$fog     = nydla_biz_mod( 'nydla_biz_color_fog', '#5b6575' );
+	$paper   = nydla_biz_mod( 'nydla_biz_color_paper', '#16191f' );
+	$accent  = nydla_biz_mod( 'nydla_biz_color_accent', '#c9852a' );
+	$accent2 = nydla_biz_mod( 'nydla_biz_color_accent2', '#1f4f8a' );
 	$logo_h  = (int) nydla_biz_mod( 'nydla_biz_logo_max_h', 48 );
 
 	$css  = ':root{';

@@ -1,14 +1,14 @@
 <?php
 /**
- * Footer — lean utility strip.
+ * Footer — lean utility strip (purchase path once).
  *
  * @package Nydla_Biz
  */
 
-$copy = (string) nydla_biz_mod( 'nydla_biz_footer_copy', __( 'NYDLA.biz — sponsor showcases for the NYDLA network.', 'nydla-biz' ) );
-$note = (string) nydla_biz_mod( 'nydla_biz_footer_note', __( 'Purchases path through TAC-USA. No cart on this site.', 'nydla-biz' ) );
+$copy = (string) nydla_biz_mod( 'nydla_biz_footer_copy', __( 'NYDLA.biz', 'nydla-biz' ) );
+$note = trim( (string) nydla_biz_mod( 'nydla_biz_footer_note', '' ) );
 $tac  = (string) nydla_biz_mod( 'nydla_biz_tac_url', 'https://tac-usa.com/' );
-$tlab = (string) nydla_biz_mod( 'nydla_biz_tac_label', __( 'Shop via TAC-USA', 'nydla-biz' ) );
+$tlab = trim( (string) nydla_biz_mod( 'nydla_biz_tac_label', __( 'Purchase path', 'nydla-biz' ) ) );
 $sec  = (string) nydla_biz_mod( 'nydla_biz_cta_secondary_url', 'mailto:info@nydla.org' );
 $slab = (string) nydla_biz_mod( 'nydla_biz_cta_secondary_label', __( 'Contact', 'nydla-biz' ) );
 ?>
@@ -20,6 +20,8 @@ $slab = (string) nydla_biz_mod( 'nydla_biz_cta_secondary_label', __( 'Contact', 
 		<p class="site-footer__links">
 			<?php if ( $sec && $slab ) : ?>
 				<a href="<?php echo esc_url( $sec ); ?>"><?php echo esc_html( $slab ); ?></a>
+			<?php endif; ?>
+			<?php if ( $sec && $slab && $tac && $tlab ) : ?>
 				<span class="site-footer__sep" aria-hidden="true">|</span>
 			<?php endif; ?>
 			<?php if ( $tac && $tlab ) : ?>

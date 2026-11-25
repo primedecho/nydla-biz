@@ -148,7 +148,7 @@ function nydla_biz_customize_hub( $wp_customize ) {
 		'nydla_biz_hub',
 		array(
 			'label'    => __( 'Section heading', 'nydla-biz' ),
-			'default'  => __( 'Live showcases', 'nydla-biz' ),
+			'default'  => __( 'Sponsors', 'nydla-biz' ),
 			'type'     => 'text',
 			'priority' => 2,
 		)
@@ -159,7 +159,7 @@ function nydla_biz_customize_hub( $wp_customize ) {
 		'nydla_biz_hub',
 		array(
 			'label'    => __( 'Section intro', 'nydla-biz' ),
-			'default'  => __( 'Open a mini-site for product detail. Purchases path through TAC-USA.', 'nydla-biz' ),
+			'default'  => __( 'Choose a sponsor to open their product page.', 'nydla-biz' ),
 			'type'     => 'textarea',
 			'priority' => 3,
 		)

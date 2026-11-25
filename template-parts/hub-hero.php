@@ -1,13 +1,13 @@
 <?php
 /**
- * Hub hero — product theater opener.
+ * Hub hero.
  *
  * @package Nydla_Biz
  */
 
 $eyebrow = (string) nydla_biz_mod( 'nydla_biz_hero_eyebrow', __( 'NYDLA.biz', 'nydla-biz' ) );
-$title   = (string) nydla_biz_mod( 'nydla_biz_hero_title', __( 'Vendor product theater', 'nydla-biz' ) );
-$text    = (string) nydla_biz_mod( 'nydla_biz_hero_text', __( 'Live sponsor mini-sites — sharp product stories, not a second association sitemap.', 'nydla-biz' ) );
+$title   = (string) nydla_biz_mod( 'nydla_biz_hero_title', __( 'Sponsor showcases', 'nydla-biz' ) );
+$text    = (string) nydla_biz_mod( 'nydla_biz_hero_text', __( 'Product pages from NYDLA sponsors — clear, short, and ready to share.', 'nydla-biz' ) );
 $image   = (string) nydla_biz_mod( 'nydla_biz_hero_image', '' );
 $p_lab   = (string) nydla_biz_mod( 'nydla_biz_cta_primary_label', __( 'Learn more', 'nydla-biz' ) );
 $p_url   = (string) nydla_biz_mod( 'nydla_biz_cta_primary_url', '#showcases' );

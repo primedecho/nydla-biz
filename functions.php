@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NYDLA_BIZ_VERSION', '1.0.0' );
+define( 'NYDLA_BIZ_VERSION', '1.0.1' );
 define( 'NYDLA_BIZ_DIR', get_template_directory() );
 define( 'NYDLA_BIZ_URI', get_template_directory_uri() );
 
@@ -64,7 +64,7 @@ function nydla_biz_enqueue_assets() {
 
 	wp_enqueue_style(
 		'nydla-biz-fonts',
-		'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap',
+		'https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap',
 		array(),
 		null
 	);

@@ -6,10 +6,8 @@
  */
 
 $cards   = nydla_biz_get_hub_cards();
-$heading = (string) nydla_biz_mod( 'nydla_biz_hub_heading', __( 'Live showcases', 'nydla-biz' ) );
-$intro   = (string) nydla_biz_mod( 'nydla_biz_hub_intro', __( 'Open a mini-site for product detail. Purchases path through TAC-USA.', 'nydla-biz' ) );
-$tac_url = (string) nydla_biz_mod( 'nydla_biz_tac_url', 'https://tac-usa.com/' );
-$tac_lab = (string) nydla_biz_mod( 'nydla_biz_tac_label', __( 'Shop via TAC-USA', 'nydla-biz' ) );
+$heading = (string) nydla_biz_mod( 'nydla_biz_hub_heading', __( 'Sponsors', 'nydla-biz' ) );
+$intro   = (string) nydla_biz_mod( 'nydla_biz_hub_intro', __( 'Choose a sponsor to open their product page.', 'nydla-biz' ) );
 
 if ( empty( $cards ) ) {
 	return;
@@ -30,7 +28,6 @@ if ( empty( $cards ) ) {
 			<?php foreach ( $cards as $card ) : ?>
 				<li class="biz-hub__item" style="--card-accent: <?php echo esc_attr( $card['accent'] ? $card['accent'] : 'var(--biz-accent)' ); ?>">
 					<a class="biz-hub__card" href="<?php echo esc_url( $card['url'] ? $card['url'] : '#' ); ?>">
-						<span class="biz-hub__mark" aria-hidden="true"></span>
 						<?php if ( ! empty( $card['logo'] ) ) : ?>
 							<span class="biz-hub__logo">
 								<img src="<?php echo esc_url( $card['logo'] ); ?>" alt="" loading="lazy" decoding="async">
@@ -40,16 +37,10 @@ if ( empty( $cards ) ) {
 						<?php if ( ! empty( $card['text'] ) ) : ?>
 							<span class="biz-hub__line"><?php echo esc_html( $card['text'] ); ?></span>
 						<?php endif; ?>
-						<span class="biz-hub__go"><?php esc_html_e( 'Open showcase', 'nydla-biz' ); ?></span>
+						<span class="biz-hub__go"><?php esc_html_e( 'View', 'nydla-biz' ); ?></span>
 					</a>
 				</li>
 			<?php endforeach; ?>
 		</ul>
-
-		<?php if ( $tac_url && $tac_lab ) : ?>
-			<p class="biz-hub__tac">
-				<a class="biz-btn biz-btn--ghost" href="<?php echo esc_url( $tac_url ); ?>"><?php echo esc_html( $tac_lab ); ?></a>
-			</p>
-		<?php endif; ?>
 	</div>
 </section>
